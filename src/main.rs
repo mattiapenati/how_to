@@ -35,7 +35,7 @@ fn build_subscriber(level: Level) -> (impl Subscriber, WorkerGuard) {
 
     let tracer = opentelemetry_jaeger::new_pipeline()
         .with_agent_endpoint("127.0.0.1:6831")
-        .with_max_packet_size(65536)
+        .with_max_packet_size(9216)
         .with_auto_split_batch(true)
         .with_service_name("http_mirror")
         .install_batch(runtime::Tokio)
